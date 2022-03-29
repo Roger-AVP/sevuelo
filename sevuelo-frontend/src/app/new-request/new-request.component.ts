@@ -27,7 +27,7 @@ export class NewRequestComponent implements OnInit {
 
 
   save(): void {
-
+console.log(this.request);
     this.requestService.addRequest(this.request)
       .subscribe((newRequest) => {
         this.request = newRequest

@@ -31,6 +31,10 @@ public class Request implements Serializable {
     @Column(name = "destination", length = 100, nullable = false)
     private String destination;
 
+    @Size(max = 100)
+    @Column(name = "comments", length = 100, nullable = true)
+    private String comments;
+    
     @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
@@ -39,8 +43,19 @@ public class Request implements Serializable {
     public Long getId() {
         return id;
     }
+    
 
-    public void setId(Long id) {
+    public String getComments() {
+		return comments;
+	}
+
+	public void setComments(String comments) {
+		this.comments = comments;
+	}
+
+
+
+	public void setId(Long id) {
         this.id = id;
     }
 

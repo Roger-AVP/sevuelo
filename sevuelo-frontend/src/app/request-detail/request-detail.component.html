@@ -18,6 +18,13 @@
           </label>
         </div>
         <div>
+          <label>Comments:
+            <span>
+                {{request.comments}}
+            </span>
+          </label>
+        </div>
+        <div>
             <label>Status:
               <span>
                   {{request.status}}
@@ -29,7 +36,14 @@
             class="btn btn-info">
           <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
         </button>
-        <button (click)="reserve()" class="btn btn-success">Reserve</button>
+        <button *ngIf="request.status == 'NEW'" (click)="reserve()" class="btn btn-success">Reserve</button>
+
+        <div>
+          <button *ngIf="request.status == 'RESERVED'"  (click)="cancelReserve()" class="btn btn-primary">Cancel reserve</button>
+        </div>
+
+
+        <button (click)="delete()" class="btn btn-danger">Delete</button>
     </div>
   </div>
 </div>

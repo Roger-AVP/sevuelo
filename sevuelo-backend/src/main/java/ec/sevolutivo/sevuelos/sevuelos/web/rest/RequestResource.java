@@ -52,6 +52,19 @@ public class RequestResource {
         request.setStatus(RequestStatus.RESERVED);
         requestRepository.save(request);
     }
+    
+    @PostMapping("/requests/delete")
+    public void reserveDelete(@RequestBody Request request) {
+        log.debug("REST request to delete a request");
+        requestRepository.delete(request);
+    }
+    
+    @PutMapping("/reserve/cancel")
+    public void reserveCancel(@RequestBody Request request) {
+        log.debug("REST request to cancel reserve a flight");
+        request.setStatus(RequestStatus.NEW);
+        requestRepository.save(request);
+    }
 
 
 }
